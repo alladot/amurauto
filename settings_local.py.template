@@ -1,0 +1,48 @@
+"""Local Settings"""
+from settings import *  # @UnusedWildImport
+
+DEBUG = True
+SECRET_KEY = ''
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+INSTALLED_APPS.append('debug_toolbar')
+MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+
+INTERNAL_IPS = ['127.0.0.1']
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+# Путь к папке с логами системы
+LOG_PATH = '/some_path/log'
+# Пути к медиа и статике
+MEDIA_ROOT = '/some_path/media'
+STATIC_ROOT = '/some_path/static'
+
+UPLOADS_ROOT = op.join(MEDIA_ROOT, 'uploads')
+
+for path in (STATIC_ROOT, MEDIA_ROOT, UPLOADS_ROOT):
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+# Настройки почты
+EMAIL_HOST = ''
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = ''
+SERVER_EMAIL = ''
+
+DATABASES = {
+    # Параметры основной базы данных
+    'default': {
+        'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'PORT': 5432,
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+    }
+}
