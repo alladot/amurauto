@@ -1,0 +1,7 @@
+future==0.16.0
+Django==1.10.8
+Mezzanine==4.2.3
+django_modeltranslation==0.12.2
+yamlordereddictloader==0.4.0
+modeltranslation==0.25
+PyYAML==3.13

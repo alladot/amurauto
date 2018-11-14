@@ -1,0 +1,237 @@
+{% extends "pages/richtextpage.html" %}
+{% load static i18n mezzanine_tags sorl_thumbnail %}#common_tags
+
+{% block top %}{% endblock top %}
+
+{% block main %}
+
+    <header style="background-image:url('{% if main_picture %}{% get_media_prefix %}{{ main_picture.file }}{% endif %}')">
+{#        {% if main_picture %}#}
+{#            {% thumbnail main_picture.file '1920' as im %}#}
+{#                <img src="{{ im.url }}"  alt="" width="1920" height="683" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1">#}
+{#            {% endthumbnail %}#}
+{#        {% endif %}#}
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">{{ settings.AATOP_SLOGAN|safe }}</h1>
+                <hr>
+                <p>{{ settings.AATOP_TEXT|safe }}</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">{{ settings.AATOP_BUTTON|safe }}</a>
+            </div>
+        </div>
+    </header>
+
+    {% if benefits %}
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ settings.AA_BENEFITS_CAPTION }}</h2>
+                    <hr class="light">
+                    {% for benefit in benefits %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            <i class="fa fa-3x {{ benefit.icon_name }} text-faded sr-icons"></i>
+                            <h3>{{ benefit.title }}</h3>
+                            <p class="text-faded">{{ benefit.content }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">{{ settings.AA_BENEFITS_BUTTON }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if services %}
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ settings.AA_SERVICES_CAPTION|safe }}</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for service in services %}
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x {{ service.icon_name }} text-primary sr-icons"></i>
+                            <h4>{{ service.title }}</h4>
+                            {#<p class="text-muted">{{ service.content }}</p>#}
+                        </div>
+                    </div>
+                    {# Чтобы верстка не "плыла" при разной высоте элементов, #}
+                    {# вставляем дополнительные div: #}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="clearfix visible-xs visible-sm"></div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="clearfix visible-md visible-lg"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if bus_list %}
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="bus-caption">
+                <h2>{{ settings.AA_BUS_CAPTION }}</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </aside>
+    <section class="no-padding" id="buses">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <!--popup-gallery-->
+                {% for bus in bus_list %}
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="portfolio-box no-padding col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <a data-fancybox-trigger="bus-{{ bus.id }}" href="javascript:;" >
+                            {% thumbnail bus.photo "800x600" crop="center" as im %}
+                               <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="">
+                            {% endthumbnail %}
+
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <h3 class="bus-name">{{ bus.title }}</h3>
+                                    <p class="bus-content">{% trans "Посмотреть больше фотографий" %}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div style="display: none;">
+                            {% for other_photo in bus.other_photos.all %}
+                                <a href="{{ other_photo.photo.url }}" data-fancybox="bus-{{ bus.id }}"></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="portfolio-infobox col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <h3 class="bus-name">{{ bus.title }}</h3>
+                        <table class="bus-table">
+                        {% if bus.year %}
+                            <tr>
+                                <td>{% trans "Год выпуска" %}</td>
+                                <td>{{ bus.year }}</td>
+                            </tr>
+                        {% endif %}
+                            <tr>
+                                <td>{% trans "Количество мест" %}</td>
+                                <td>{{ bus.capacity }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% trans "Стоимость" %}</td>
+                                <td>{{ bus.cost_per_hour|floatformat }} {% trans "руб./час" %}</td>
+                                </tr>
+                            <tr>
+                                <td>{% trans "Минимальный заказ" %}</td>
+                                <td>{{ bus.min_hours|floatformat }} {% trans "ч." %}</td>
+                            </tr>
+                        {% if bus.content %}
+                            <tr>
+                                <td colspan="2">{{ bus.content }}</td>
+                            </tr>
+                        {% endif %}
+                        </table>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if reviews %}
+    <section class="bg-primary" id="reviews">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ settings.AA_REVIEWS_CAPTION }}</h2>
+                    <hr class="light">
+                </div>
+                <div id="owl-reviews" class="service_carousel col-lg-12 text-center">
+                    {% for review in reviews %}
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            {% if review.photo %}
+                                <div class="img-box circle-image sr-icons">
+                                    {% thumbnail review.photo "56x56" crop="center" as im %}
+                                       <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                    {% endthumbnail %}
+                                </div><!-- /.img-box -->
+                            {% elif review.is_company %}
+                                <i class="fa fa-4x fa-university text-faded sr-icons"></i>
+                            {% else %}
+                                <i class="fa fa-4x fa-user text-faded sr-icons"></i>
+                            {% endif %}
+                            <h3>{{ review.title }}</h3>
+                            <p class="text-faded">{{ review.content }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if documents %}
+    <aside id="documents" class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h3>{{ settings.AA_DOCS_CAPTION }}</h3>
+                <a data-fancybox-trigger="documents-gallery" href="javascript:;" class="btn btn-default btn-xl sr-button">{{ settings.AA_DOCS_BUTTON }}</a>
+                <div style="display: none;">
+                    {% for doc in documents %}
+                        <a href="{{ doc.image.url }}" data-fancybox="documents-gallery" data-caption="{{doc.caption}}"></a>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </aside>
+    {% endif %}
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">{{ settings.AA_CONTACT_CAPTION }}</h2>
+                    <hr class="primary">
+                    <p>{{ settings.AA_CONTACT_TEXT|safe }}</p>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                        <i class="fa fa-phone fa-3x sr-contact"></i>
+                        <p class="contact-info"><a href="tel:+74212{{ settings.AA_CONTACT_PHONE }}">{{ settings.AA_CONTACT_PHONE }}</a></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                        <i class="fa fa-whatsapp fa-3x sr-contact"></i>
+                        <p class="contact-info">
+                            {% spaceless %}
+                            <a href="whatsapp://send?phone={{settings.AA_CONTACT_WHATSAPP_1|cut:' '|cut:'+'|cut:'-'}}">{{settings.AA_CONTACT_WHATSAPP_1}}</a>
+                            <br>
+                            <a href="whatsapp://send?phone={{settings.AA_CONTACT_WHATSAPP_2|cut:' '|cut:'+'|cut:'-'}}">{{settings.AA_CONTACT_WHATSAPP_2}}</a>
+                            {% endspaceless %}
+                        </p>
+                    </div>
+                    <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">-->
+                        <!--<i class="fa fa-envelope-o fa-3x sr-contact"></i>-->
+                        <!--<p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                        <p class="copyright">© {% now 'Y' %} ИП Моргунов А.Б.</p>
+                    </div>
+    </section>
+
+{% endblock main %}

@@ -1,0 +1,3 @@
+-r requirements.pip
+ipdb
+django_debug_toolbar==1.9.1
