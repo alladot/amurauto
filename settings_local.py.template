@@ -20,6 +20,12 @@ LOG_PATH = '/some_path/log'
 MEDIA_ROOT = '/some_path/media'
 STATIC_ROOT = '/some_path/static'
 
+UPLOADS_ROOT = op.join(MEDIA_ROOT, 'uploads')
+
+for path in (STATIC_ROOT, MEDIA_ROOT, UPLOADS_ROOT):
+    if not os.path.exists(path):
+        os.mkdir(path)
+
 # Настройки почты
 EMAIL_HOST = ''
 EMAIL_PORT = 25

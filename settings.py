@@ -14,30 +14,15 @@ except KeyError:
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# VAR_DIR = os.path.join(VIRTUALENV_DIR, 'var')
-#TODO: !!! remove it!
-VAR_DIR = os.path.join(BASE_DIR, 'www')
-
-if not os.path.exists(VAR_DIR):
-    os.mkdir(VAR_DIR)
-
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
-MEDIA_ROOT = os.path.join(VAR_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(VAR_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-UPLOADS_ROOT = op.join(MEDIA_ROOT, 'uploads')
-
-for path in (STATIC_ROOT, MEDIA_ROOT, UPLOADS_ROOT):
-    if not os.path.exists(path):
-        os.mkdir(path)
 
 SECRET_KEY = '{{ secret_key }}'
 
