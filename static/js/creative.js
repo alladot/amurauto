@@ -83,12 +83,12 @@ function languageSwitcher() {
 }
 
 // carousel
-function servicecarousel () {
+function reviewsCarousel () {
     /**
-     * Создает слайдер типа крусель.
+     * Создает слайдер для отзывов
      * https://owlcarousel2.github.io/OwlCarousel2/
      */
-    $(".service_carousel").each(function() {
+    $(".reviews_carousel").each(function() {
         $(this).on('initialized.owl.carousel resized.owl.carousel', function(event) {
             /**
              * Скрывает стрелки навигации по слайдам. Если ширина области просмотра:
@@ -153,10 +153,10 @@ function servicecarousel () {
     });
 }
 
-// instance of fuction while Window Load event
+// instance of function while Window Load event
 jQuery(window).load(function () {
     (function ($) {
         languageSwitcher();
-        servicecarousel();
+        reviewsCarousel();
     })(jQuery);
 });
