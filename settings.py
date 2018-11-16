@@ -43,7 +43,7 @@ LANGUAGE_CODE = 'ru'
 
 LANGUAGES = (
     ('ru', _('Russian')),
-    ('en', _('English')),
+    # ('en', _('English')),
     # ('zh-cn', _('Simplified Chinese')),
 )
 
