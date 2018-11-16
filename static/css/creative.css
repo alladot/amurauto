@@ -123,6 +123,19 @@ aside {
 .navbar-default .nav > li.active > a:focus:hover {
   background-color: transparent;
 }
+/* телефон на верхней панели */
+a#navbar-phone {
+  text-align:center;
+  font-size:22px;
+  color:#F05F40;
+}
+a#navbar-phone:before {
+/*    content: '\f095';*/
+    content: '\f098';
+    font-family: 'FontAwesome';
+    margin-right: 5px;
+}
+
 @media (min-width: 768px) {
   .navbar-default {
     background-color: transparent;
@@ -186,18 +199,6 @@ aside {
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #F05F40;
   }
-}
-
-a#navbar-phone {
-  text-align:center;
-  font-size:22px;
-  color:#F05F40;
-}
-a#navbar-phone:before {
-/*    content: '\f095';*/
-    content: '\f098';
-    font-family: 'FontAwesome';
-    margin-right: 10px;
 }
 
 header {
@@ -361,37 +362,6 @@ header .header-content .header-content-inner p {
 
 .copyright{
   margin-top: 40px;
-}
-
-.service .owl-theme .owl-nav {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 100%;
-    right: 0;
-    margin: 0;
-    margin-bottom: 65px;
-}
-
-.service .owl-theme .owl-nav [class*=owl-] {
-    color: #202f35;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    height: 40px;
-    width: 18px;
-    line-height: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-left: 1px;
-    display: inline-block;
-    transition: color .3s ease;
-}
-
-.service .owl-theme .owl-nav [class*=owl-]:hover {
-    color: #48c7ec;
-    transition: .5s ease;
 }
 
 .call-to-action h2 {
