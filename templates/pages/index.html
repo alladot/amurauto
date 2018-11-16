@@ -92,8 +92,8 @@
             <div class="row no-gutter">
                 <!--popup-gallery-->
                 {% for bus in bus_list %}
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="portfolio-box no-padding col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="portfolio-box no-padding col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <a data-fancybox-trigger="bus-{{ bus.id }}" href="javascript:;" >
                             {% thumbnail bus.photo "800x600" crop="center" as im %}
                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="">
@@ -112,7 +112,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="portfolio-infobox col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="portfolio-infobox col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                         <h3 class="bus-name">{{ bus.title }}</h3>
                         <table class="bus-table">
