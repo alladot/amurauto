@@ -74,7 +74,7 @@
                     {% endif %}
                 </div>
 
-                <a class="navbar-brand page-scroll navbar-center" href="#page-top">
+                <a class="navbar-brand page-scroll navbar-left" href="#page-top">
                     {# АмурАвто-М #}
                     <img src="{% static "images/logo.png"%}">
                 </a>
@@ -97,6 +97,30 @@
                     <li>
                         <a class="page-scroll" href="#contact">{% trans "Контакты" %}</a>
                     </li>
+                    {% comment %}
+                    Можно перенести переключатель языков в список меню,
+                    сделать плоский список и отображать только альтернативный язык
+                    <li>
+                        <div class="navbar-language navbar-left">
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% if languages|length > 1 %}
+                            <div id="polyglotLanguageSwitcher" class="">
+                                <form action="">
+                                    {% csrf_token %}
+                                    <select name="language" id="polyglot-language-options">
+                                    {% for language in languages %}
+                                        <option id="{{ language.code }}" value="{{ language.code }}"
+                                            {% if language.code == LANGUAGE_CODE %}selected="selected"{% endif %}>
+                                            {{ language.name_local }}
+                                        </option>
+                                    {% endfor %}
+                                    </select>
+                                </form>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% endcomment %}
 
                 </ul>
 
