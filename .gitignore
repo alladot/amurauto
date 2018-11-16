@@ -7,4 +7,3 @@
 .venv
 .hgignore
 settings_local.py
-/static
