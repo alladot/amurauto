@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-# from django.contrib.contenttypes.admin import GenericTabularInline
 from django.contrib.messages import info
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -11,27 +10,7 @@ from mezzanine.conf.models import Setting
 from mezzanine.utils.static import static_lazy as static
 
 from common.forms import SettingsForm
-# from common.forms import PhoneForm
-# from common.models import EmailAddress
-# from common.models import PhoneNumber
 from common.models import IndexPagePicture
-
-
-# class EmailInline(GenericTabularInline):
-#     """
-#     Email адреса
-#     """
-#     model = EmailAddress
-#     extra = 1
-
-
-# class PhoneInline(GenericTabularInline):
-#     """
-#     Телефонные номера
-#     """
-#     model = PhoneNumber
-#     form = PhoneForm
-#     extra = 1
 
 
 class TranslatableSettingsAdmin(SettingsAdmin):

@@ -11,8 +11,6 @@ if settings.USE_MODELTRANSLATION:
     from collections import OrderedDict
     from modeltranslation.utils import build_localized_fieldname
 
-# from common.models import PhoneNumber
-
 
 FIELD_TYPES = {
     bool: forms.BooleanField,
@@ -129,38 +127,3 @@ class SettingsForm(mezzanine_forms.SettingsForm):
             else:
                 setting_obj.value = value
             setting_obj.save()
-
-
-# class PhoneForm(forms.ModelForm):
-#     """
-#     Форма телефона c кастомной маской, используется jQuery-Mask-Plugin.
-#     Маска задается в атрибутах виджета параметром `data-mask'
-#
-#     .. _jQuery-Mask-Plugin:
-#        https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
-#        https://github.com/igorescobar/jQuery-Mask-Plugin
-#     """
-#     class Meta:
-#         model = PhoneNumber
-#         widgets = {
-#             'phone': forms.TextInput(
-#                 attrs={
-#                     'class': 'vTextField',
-#                     'data-mask': '+0 (000) 000-00-00-000000000'
-#                 },
-#
-#             ),
-#         }
-#         fields = ('phone',)
-#
-#
-# class SearchForm(forms.Form):
-#     """
-#     Форма поиска
-#     """
-#     search = forms.CharField(
-#         label=_('Title'),
-#         widget=forms.TextInput(attrs={
-#             'placeholder': _('Искать по наименованию')
-#         })
-#     )

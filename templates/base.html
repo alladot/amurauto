@@ -55,6 +55,7 @@
                     <span class="sr-only"></span>{% trans "Меню" %} <i class="fa fa-bars"></i>
                 </button>
 
+                {% comment %}
                 <div class="navbar-language navbar-left">
                     {% get_language_info_list for LANGUAGES as languages %}
                     {% if languages|length > 1 %}
@@ -73,6 +74,7 @@
                     </div>
                     {% endif %}
                 </div>
+                {% endcomment %}
 
                 <a class="navbar-brand page-scroll navbar-left" href="#page-top">
                     {# АмурАвто-М #}
@@ -156,7 +158,7 @@
     <script src="{% static "js/bootstrap.min.js" %}"></script>
 
     <script src="{% static "js/custom.jquery.polyglot.language.switcher.min.js" %}"></script>
-    <script>var URL_CHANGE_LANG = "{% url 'set_language' %}";</script>
+    {#<script>var URL_CHANGE_LANG = "{% url 'set_language' %}";</script>#}
 
     <!-- Plugin JavaScript -->
     <script src="{% static "js/jquery.easing.min.js" %}"></script>

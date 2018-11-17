@@ -9,10 +9,6 @@ from reviews.models import Review
 from services.models import Service
 
 
-# Константы для главной страницы
-# NEWS_AMOUNT = 3
-
-
 @processor_for('/')
 def index(request, page):
     """
