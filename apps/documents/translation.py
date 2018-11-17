@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from modeltranslation.translator import register, TranslationOptions
 
 from documents.models import Document

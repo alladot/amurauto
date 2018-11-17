@@ -159,7 +159,7 @@
                     <h2 class="section-heading">{{ settings.AA_REVIEWS_CAPTION }}</h2>
                     <hr class="light">
                 </div>
-                <div id="owl-reviews" class="reviews_carousel col-lg-12 text-center">
+                <div id="owl-reviews" class="reviews-carousel col-lg-12 text-center">
                     {% for review in reviews %}
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             {% if review.photo %}
@@ -169,9 +169,9 @@
                                     {% endthumbnail %}
                                 </div>
                             {% elif review.is_company %}
-                                    <i class="fa fa-4x fa-university text-faded"></i>
+                                <i class="fa fa-4x fa-university text-faded"></i>
                             {% else %}
-                                    <i class="fa fa-4x fa-user text-faded"></i>
+                                <i class="fa fa-4x fa-user text-faded"></i>
                             {% endif %}
                             <h3>{{ review.title }}</h3>
                             <p class="text-faded">{{ review.content }}</p>

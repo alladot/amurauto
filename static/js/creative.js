@@ -83,12 +83,12 @@ function languageSwitcher() {
 }
 
 // carousel
-function reviewsCarousel () {
+function reviewsCarousel() {
     /**
      * Создает слайдер для отзывов
      * https://owlcarousel2.github.io/OwlCarousel2/
      */
-    $(".reviews_carousel").each(function() {
+    $(".reviews-carousel").each(function() {
         $(this).on('initialized.owl.carousel resized.owl.carousel', function(event) {
             /**
              * Скрывает стрелки навигации по слайдам. Если ширина области просмотра:
