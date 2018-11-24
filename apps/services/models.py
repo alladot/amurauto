@@ -9,7 +9,7 @@ class Service(models.Model):
     title = models.CharField(
         'Название услуги', blank=False, null=False, max_length=100)
     content = models.TextField(
-        'Описание', blank=False, null=False, max_length=300)
+        'Описание', blank=True, null=False, max_length=300)
     icon_name = models.CharField(
         'Название иконки', blank=True, null=True, max_length=30)
 

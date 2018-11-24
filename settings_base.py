@@ -1,38 +1,35 @@
+# coding=utf-8
+
+# Django settings for amurauto project.
+
+from django.conf.global_settings import *    # pylint: disable=W0614,W0401
+from django.utils.translation import ugettext_lazy as _
 import os
-import os.path as op
 import sys
 
-from django.conf.global_settings import *  # @UnusedWildImport
-from django.utils.translation import ugettext_lazy as _
 
 try:
-    VIRTUALENV_DIR = os.environ['VIRTUAL_ENV']
+    virtualenv_root = os.environ['VIRTUAL_ENV']
 except KeyError:
     sys.stderr.write('Error: virtualenv is not activated.\n')
     sys.exit(1)
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+VAR_ROOT = os.path.join(virtualenv_root, 'var')
 
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+if not os.path.exists(VAR_ROOT):
+    os.mkdir(VAR_ROOT)
 
-MEDIA_URL = '/media/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-SECRET_KEY = '{{ secret_key }}'
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 
 SITE_ID = 1
 SITE_TITLE = _('Пассажирские перевозки')
 
-USE_I18N = True
-USE_L10N = False
-USE_TZ = True
 TIME_ZONE = 'Asia/Vladivostok'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = False
 
 # Форматы даты/времени для шаблонов Django.
 DATE_FORMAT = 'd.m.Y'
@@ -47,15 +44,29 @@ LANGUAGES = (
     # ('zh-cn', _('Simplified Chinese')),
 )
 
-USE_MODELTRANSLATION = True
+USE_MODELTRANSLATION = False
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 ROSETTA_MESSAGES_SOURCE_LANGUAGE_CODE = 'ru'
 ROSETTA_MESSAGES_SOURCE_LANGUAGE_NAME = 'Russian'
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(PROJECT_ROOT, 'locale'),
 )
+
+MEDIA_ROOT = os.path.join(VAR_ROOT, 'media')
+
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
+SECRET_KEY = '{{ secret_key }}'
 
 ROOT_URLCONF = 'urls'
 
@@ -81,11 +92,8 @@ INSTALLED_APPS = [
     'mezzanine.forms',
     # Other apps
     'compressor',
-    # 'pytils',
-    # 'grappelli',
     'rosetta-grappelli',
     'rosetta',
-    # 'widget_tweaks',
     'sorl.thumbnail',
     # Projects apps
     'benefits',
@@ -120,7 +128,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,6 +149,17 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS += (
+)
+
+EMAIL_HOST = ''
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+SERVER_EMAIL = ''
+DEFAULT_FROM_EMAIL = ''
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -261,6 +280,16 @@ ADMIN_REMOVAL_SETTINGS = [
     'RICHTEXT_FILTER_LEVEL', 'SEARCH_PER_PAGE',
     'TAG_CLOUD_SIZES',
 ]
+
+# Specifically for FileBrowser
+if not os.path.exists(MEDIA_ROOT):
+    os.mkdir(MEDIA_ROOT)
+if not os.path.exists(os.path.join(MEDIA_ROOT, 'uploads')):
+    os.mkdir(os.path.join(MEDIA_ROOT, 'uploads'))
+
+# Если не определить перед set_dynamic_settings(globals()),
+#  то выводятся предупреждения. Переопределено в settings_local
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 try:
     from mezzanine.utils.conf import set_dynamic_settings
