@@ -19,7 +19,7 @@ class ServiceAdmin(BaseTranslationModelAdmin):
         }),
     )
     list_display = [
-        'title', 'content',
+        'title',
     ]
     list_display_links = ('title',)
 
