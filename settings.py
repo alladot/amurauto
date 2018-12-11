@@ -65,8 +65,8 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-SECRET_KEY = '{{ secret_key }}'
-NEVERCACHE_KEY = '{{ nevercache_key }}'
+SECRET_KEY = 'toc$&z3(#ljz4d0xiu!x$h(rkhxju9n#hjq$fwb^8(y29(+9)n'
+NEVERCACHE_KEY = '5l5-d_qxs6@8@lxy^_bbli5kk1*9nu_1k$-8db&72slr6@3s!('
 
 ROOT_URLCONF = 'urls'
 
