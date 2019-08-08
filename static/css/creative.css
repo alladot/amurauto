@@ -72,6 +72,10 @@ aside {
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
+.tran3s {
+  transition: all 0.3s ease-in-out;
+}
+
 
 /* Для мобильного меню переопределим некоторые настройки */
 .navbar-default .container-fluid > .navbar-header {
@@ -562,3 +566,22 @@ body {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }*/
+
+.scroll-top {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    border-radius: 50%;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    display: none;
+    color: #F05F40;
+    background: #10252e;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.scroll-top span:before {
+  font-size: 27px;
+}
