@@ -568,8 +568,8 @@ body {
 }*/
 
 .scroll-top {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     position: fixed;
     border-radius: 50%;
     bottom: 30px;
@@ -577,7 +577,7 @@ body {
     z-index: 99;
     display: none;
     color: #F05F40;
-    background: #10252e;
+    background: #313131;
     text-align: center;
     border: none;
     outline: none;

@@ -156,13 +156,25 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h3>{{ settings.AA_DOCS_CAPTION }}</h3>
-                <a data-fancybox-trigger="documents-gallery" href="javascript:;" class="btn btn-default btn-xl sr-button">{{ settings.AA_DOCS_BUTTON }}</a>
-                <div style="display: none;">
-                    {% for doc in documents %}
-                        <a href="{{ doc.image.url }}" data-fancybox="documents-gallery" data-caption="{{doc.caption}}"></a>
-                    {% endfor %}
+                {% if settings.AA_DOCS_BLANC_FILE %}
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                {% endif %}
+                    <a data-fancybox-trigger="documents-gallery" href="javascript:;" class="btn btn-default btn-xl sr-button">{{ settings.AA_DOCS_BUTTON }}</a>
+                    <div style="display: none;">
+                        {% for doc in documents %}
+                            <a href="{{ doc.image.url }}" data-fancybox="documents-gallery" data-caption="{{doc.caption}}"></a>
+                        {% endfor %}
+                        {% for doc in documents %}
+                            <a href="{{ doc.image.url }}" data-fancybox="documents-gallery" data-caption="{{doc.caption}}"></a>
+                        {% endfor %}
+                    </div>
+                {% if settings.AA_DOCS_BLANC_FILE %}
                 </div>
 
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a class="btn btn-default btn-xl sr-button" href="/media/uploads/{{settings.AA_DOCS_BLANC_FILE}}" download>{{ settings.AA_DOCS_BLANC }}</a>
+                </div>
+                {% endif %}
             </div>
         </div>
     </aside>
