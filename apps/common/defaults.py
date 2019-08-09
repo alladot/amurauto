@@ -137,6 +137,24 @@ register_setting(
 )
 
 register_setting(
+    name='AA_DOCS_BLANC',
+    label='Текст кнопки для скачивания бланка договора',
+    description='',
+    editable=True,
+    translatable=True,
+    default='Бланк договора',
+)
+
+register_setting(
+    name='AA_DOCS_BLANC_FILE',
+    label='Имя файла бланка договора',
+    description='',
+    editable=True,
+    translatable=True,
+    default='',
+)
+
+register_setting(
     name='AA_CONTACT_CAPTION',
     label='Заголовок для контактов',
     description='',
@@ -204,6 +222,7 @@ register_setting(
         'AA_BENEFITS_CAPTION', 'AA_BENEFITS_BUTTON', 'AA_SERVICES_CAPTION',
         'AA_BUS_CAPTION', 'AA_REVIEWS_CAPTION',
         'AA_DOCS_CAPTION', 'AA_DOCS_BUTTON',
+        'AA_DOCS_BLANC', 'AA_DOCS_BLANC_FILE',
         'AA_CONTACT_CAPTION', 'AA_CONTACT_TEXT',
         'AA_CONTACT_PHONE', 'AA_CONTACT_WHATSAPP_1', 'AA_CONTACT_WHATSAPP_2',
     ),
