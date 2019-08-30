@@ -201,6 +201,16 @@ register_setting(
 )
 
 register_setting(
+    name='AA_CONTACT_EMAIL',
+    label='Электропочта для контактов',
+    description='Электронная почта для контактов',
+    editable=True,
+    translatable=False,
+    default='abmorgunov@mail.ru',
+)
+
+
+register_setting(
     name='TEMPLATE_ACCESSIBLE_SETTINGS',
     description='Sequence of setting names available within templates.',
     editable=False,
@@ -225,5 +235,6 @@ register_setting(
         'AA_DOCS_BLANC', 'AA_DOCS_BLANC_FILE',
         'AA_CONTACT_CAPTION', 'AA_CONTACT_TEXT',
         'AA_CONTACT_PHONE', 'AA_CONTACT_WHATSAPP_1', 'AA_CONTACT_WHATSAPP_2',
+        'AA_CONTACT_EMAIL',
     ),
 )
