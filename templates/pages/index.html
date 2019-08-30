@@ -220,11 +220,11 @@
                     <hr class="primary">
                     <p>{{ settings.AA_CONTACT_TEXT|safe }}</p>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
                         <i class="fa fa-phone fa-3x sr-contact"></i>
                         <p class="contact-info"><a href="tel:+74212{{ settings.AA_CONTACT_PHONE }}">{{ settings.AA_CONTACT_PHONE }}</a></p>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
                         <i class="fa fa-whatsapp fa-3x sr-contact"></i>
                         <p class="contact-info">
                             {% spaceless %}
@@ -233,6 +233,10 @@
                             <a href="whatsapp://send?phone={{settings.AA_CONTACT_WHATSAPP_2|cut:' '|cut:'+'|cut:'-'}}">{{settings.AA_CONTACT_WHATSAPP_2}}</a>
                             {% endspaceless %}
                         </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                        <i class="fa fa-at fa-3x sr-contact"></i>
+                        <p class="contact-info"><a href="mailto:{{ settings.AA_CONTACT_EMAIL }}">{{ settings.AA_CONTACT_EMAIL }}</a></p>
                     </div>
                     <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">-->
                         <!--<i class="fa fa-envelope-o fa-3x sr-contact"></i>-->
