@@ -69,58 +69,65 @@
             <div class="row no-gutter">
                 <!--popup-gallery-->
                 {% for bus in bus_list %}
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <div class="portfolio-box no-padding col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <a data-fancybox-trigger="bus-{{ bus.id }}" href="javascript:;" >
-                            {% thumbnail bus.photo "800x600" crop="center" as im %}
-                               <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="">
-                            {% endthumbnail %}
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="portfolio-box no-padding col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <a data-fancybox-trigger="bus-{{ bus.id }}" href="javascript:;" >
+                                {% thumbnail bus.photo "800x600" crop="center" as im %}
+                                   <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="">
+                                {% endthumbnail %}
 
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <h3 class="bus-name">{{ bus.title }}</h3>
-                                    <p class="bus-content">{% trans "Посмотреть больше фотографий" %}</p>
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <h3 class="bus-name">{{ bus.title }}</h3>
+                                        <p class="bus-content">{% trans "Посмотреть больше фотографий" %}</p>
+                                    </div>
                                 </div>
+                            </a>
+                            <div style="display: none;">
+                                {% for other_photo in bus.other_photos.all %}
+                                    <a href="{{ other_photo.photo.url }}" data-fancybox="bus-{{ bus.id }}"></a>
+                                {% endfor %}
                             </div>
-                        </a>
-                        <div style="display: none;">
-                            {% for other_photo in bus.other_photos.all %}
-                                <a href="{{ other_photo.photo.url }}" data-fancybox="bus-{{ bus.id }}"></a>
-                            {% endfor %}
                         </div>
-                    </div>
-                    <div class="portfolio-infobox col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="portfolio-infobox col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                        <h3 class="bus-name">{{ bus.title }}</h3>
-                        <table class="bus-table">
-                        {% if bus.year %}
-                            <tr>
-                                <td>{% trans "Год выпуска" %}</td>
-                                <td>{{ bus.year }}</td>
-                            </tr>
-                        {% endif %}
-                            <tr>
-                                <td>{% trans "Количество мест" %}</td>
-                                <td>{{ bus.capacity }}</td>
-                            </tr>
-                            <tr>
-                                <td>{% trans "Стоимость" %}</td>
-                                <td>{{ bus.cost_per_hour|floatformat }} {% trans "руб./час" %}</td>
+                            <h3 class="bus-name">{{ bus.title }}</h3>
+                            <table class="bus-table">
+                            {% if bus.year %}
+                                <tr>
+                                    <td>{% trans "Год выпуска" %}</td>
+                                    <td>{{ bus.year }}</td>
                                 </tr>
-                            <tr>
-                                <td>{% trans "Минимальный заказ" %}</td>
-                                <td>{{ bus.min_hours|floatformat }} {% trans "ч." %}</td>
-                            </tr>
-                        {% if bus.content %}
-                            <tr>
-                                <td colspan="2">{{ bus.content }}</td>
-                            </tr>
-                        {% endif %}
-                        </table>
+                            {% endif %}
+                                <tr>
+                                    <td>{% trans "Количество мест" %}</td>
+                                    <td>{{ bus.capacity }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans "Стоимость" %}</td>
+                                    <td>{{ bus.cost_per_hour|floatformat }} {% trans "руб./час" %}</td>
+                                    </tr>
+                                <tr>
+                                    <td>{% trans "Минимальный заказ" %}</td>
+                                    <td>{{ bus.min_hours|floatformat }} {% trans "ч." %}</td>
+                                </tr>
+                            {% if bus.content %}
+                                <tr>
+                                    <td colspan="2">{{ bus.content }}</td>
+                                </tr>
+                            {% endif %}
+                            </table>
+
+                        </div>
 
                     </div>
 
-                </div>
+                    {# Чтобы верстка не "плыла" при разной высоте элементов, #}
+                    {# вставляем дополнительные div: #}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="clearfix visible-lg"></div>
+                    {% endif %}
+
                 {% endfor %}
 
             </div>
@@ -141,6 +148,15 @@
                             <h3>{{ benefit.title }}</h3>
                             <p class="text-faded">{{ benefit.content }}</p>
                         </div>
+
+                        {# Чтобы верстка не "плыла" при разной высоте элементов, #}
+                        {# вставляем дополнительные div: #}
+                        {% if forloop.counter|divisibleby:2 %}
+                            <div class="clearfix visible-sm visible-md"></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="clearfix visible-lg"></div>
+                        {% endif %}
                     {% endfor %}
                 </div>
 {#                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">#}
