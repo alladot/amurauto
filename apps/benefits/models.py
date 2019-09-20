@@ -12,8 +12,10 @@ class Benefit(models.Model):
         'Описание', blank=False, null=False, max_length=300)
     icon_name = models.CharField(
         'Название иконки', blank=True, null=True, max_length=30)
+    order = models.IntegerField(
+        'Порядковый номер', null=True)
 
     class Meta:
         verbose_name = 'Преимущество'
         verbose_name_plural = 'Преимущества'
-        ordering = ("title",)
+        ordering = ('order', 'title',)

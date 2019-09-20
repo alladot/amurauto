@@ -12,8 +12,10 @@ class Service(models.Model):
         'Описание', blank=True, null=False, max_length=300)
     icon_name = models.CharField(
         'Название иконки', blank=True, null=True, max_length=30)
+    order = models.IntegerField(
+        'Порядковый номер', null=True)
 
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
-        ordering = ('title',)
+        ordering = ('order', 'title',)

@@ -33,13 +33,15 @@ class Bus(Displayable, RichText, AdminThumbMixin):
         verbose_name='Стоимость в час', blank=True, null=True)
     min_hours = models.FloatField(
         verbose_name='Минимальный заказ, часов', blank=True, null=True)
+    order = models.IntegerField(
+        'Порядковый номер', null=True)
 
     admin_thumb_field = 'photo'
 
     class Meta:
         verbose_name = 'Автобус'
         verbose_name_plural = 'Автобусы'
-        ordering = ('title',)
+        ordering = ('order', 'title',)
 
     def get_absolute_url(self):
         return reverse(
