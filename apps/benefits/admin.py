@@ -12,6 +12,7 @@ class BenefitAdmin(BaseTranslationModelAdmin):
     fieldsets = (
         (None, {
             'fields': [
+                'order',
                 'title',
                 'content',
                 'icon_name',
@@ -19,7 +20,7 @@ class BenefitAdmin(BaseTranslationModelAdmin):
         }),
     )
     list_display = [
-        'title', 'content',
+        'order', 'title', 'content',
     ]
     list_display_links = ('title',)
 

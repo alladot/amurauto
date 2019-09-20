@@ -12,6 +12,7 @@ class ServiceAdmin(BaseTranslationModelAdmin):
     fieldsets = (
         (None, {
             'fields': [
+                'order',
                 'title',
                 'content',
                 'icon_name',
@@ -19,7 +20,7 @@ class ServiceAdmin(BaseTranslationModelAdmin):
         }),
     )
     list_display = [
-        'title',
+        'order', 'title', 'content'
     ]
     list_display_links = ('title',)
 

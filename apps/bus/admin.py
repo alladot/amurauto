@@ -22,6 +22,7 @@ class BusAdmin(BaseTranslationModelAdmin):
     fieldsets = (
         (None, {
             'fields': [
+                'order',
                 'photo',
                 'title',
                 'year',
@@ -44,7 +45,7 @@ class BusAdmin(BaseTranslationModelAdmin):
 
     )
     list_display = [
-        'admin_thumb', 'title', 'year',
+        'order', 'admin_thumb', 'title', 'year',
         'status', 'admin_link'
     ]
     list_display_links = ('title', 'admin_thumb')

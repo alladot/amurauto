@@ -12,13 +12,14 @@ class DocumentAdmin(BaseTranslationModelAdmin):
     fieldsets = (
         (None, {
             'fields': [
+                'order',
                 'caption',
                 'image',
             ]
         }),
     )
     list_display = [
-        'caption', 'image',
+        'order', 'caption', 'image',
     ]
     list_display_links = ('caption', 'image',)
 

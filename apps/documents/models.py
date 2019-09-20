@@ -14,10 +14,12 @@ class Document(models.Model, AdminThumbMixin):
         format='Image', max_length=255, null=False, blank=False)
     caption = models.CharField(
         verbose_name='Наименование', blank=False, null=False, max_length=150)
+    order = models.IntegerField(
+        'Порядковый номер', null=True)
 
     admin_thumb_field = 'image'
 
     class Meta:
         verbose_name = 'Документ'
         verbose_name_plural = 'Документы'
-        ordering = ('caption',)
+        ordering = ('order', 'caption',)

@@ -22,11 +22,11 @@ def index(request, page):
     """
     main_picture = IndexPagePicture.objects.filter(
         position=IndexPagePicture.MAIN, file__isnull=False).first()
-    benefits = Benefit.objects.order_by('title')
-    services = Service.objects.order_by('title')
-    bus_list = Bus.objects.published().order_by('-capacity', 'title')
+    benefits = Benefit.objects.order_by('order', 'title',)
+    services = Service.objects.order_by('order', 'title',)
+    bus_list = Bus.objects.published().order_by('order', '-capacity', 'title',)
     reviews = Review.objects.order_by('?')
-    documents = Document.objects.order_by('caption')
+    documents = Document.objects.order_by('order', 'caption',)
 
     return {
         'main_picture': main_picture,
