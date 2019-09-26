@@ -283,6 +283,11 @@ header .header-content .header-content-inner p {
 .service-box p {
   margin-bottom: 0;
 }
+
+.rowline {
+  height: 20px;
+}
+
 .portfolio-box {
   position: relative;
   display: block;
@@ -342,7 +347,7 @@ header .header-content .header-content-inner p {
   position: relative;
   display: block;
   max-width: 800px;
-  margin: 0 auto 0px;
+  margin: 0 auto 18px;
 }
 .portfolio-infobox .bus-name {
   color: #F05F40;
