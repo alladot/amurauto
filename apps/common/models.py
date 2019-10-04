@@ -41,3 +41,20 @@ class IndexPagePicture(AdminThumbMixin, models.Model):
         name = force_text(self.file)
         name = name.rsplit('/', 1)[-1]
         return name
+
+
+class IndexPageText(models.Model):
+    """
+    Модель текстов, используемых на главной странице
+    """
+    code = models.CharField(
+        'Код', blank=False, null=False, max_length=100)
+    title = models.CharField(
+        'Заголовок', blank=True, null=False, max_length=100)
+    content = models.TextField(
+        'Содержание', blank=True, null=False, max_length=5000)
+
+
+    class Meta:
+        verbose_name = 'Текст'
+        verbose_name_plural = 'Тексты'
