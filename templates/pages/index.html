@@ -1,5 +1,5 @@
 {% extends "pages/richtextpage.html" %}
-{% load static i18n mezzanine_tags sorl_thumbnail %}#common_tags
+{% load static i18n mezzanine_tags sorl_thumbnail common_tags %}
 
 {% block top %}{% endblock top %}
 
@@ -125,6 +125,7 @@
                     {# Чтобы верстка не "плыла" при разной высоте элементов, #}
                     {# вставляем дополнительные div: #}
                     {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-lg-12 rowline visible-lg"></div>
                         <div class="clearfix visible-lg"></div>
                     {% endif %}
 
@@ -231,7 +232,15 @@
     <section id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    {% if settings.AA_ABOUT_CODE|text_get:"title" %}
+                    <h2 class="section-heading">{{ settings.AA_ABOUT_CODE|text_get:"title" }}</h2>
+                    <hr class="primary">
+                    <div class="about">
+                        {{ settings.AA_ABOUT_CODE|text_get:"content"|safe }}
+                    </div>
+                    {% endif %}
+
                     <h2 class="section-heading">{{ settings.AA_CONTACT_CAPTION }}</h2>
                     <hr class="primary">
                     <p>{{ settings.AA_CONTACT_TEXT|safe }}</p>

@@ -209,6 +209,14 @@ register_setting(
     default='abmorgunov@mail.ru',
 )
 
+register_setting(
+    name='AA_ABOUT_CODE',
+    label='Код текста для раздела "О компании"',
+    description='Код текста для раздела "О компании"',
+    editable=True,
+    translatable=True,
+    default='',
+)
 
 register_setting(
     name='TEMPLATE_ACCESSIBLE_SETTINGS',
@@ -235,6 +243,6 @@ register_setting(
         'AA_DOCS_BLANC', 'AA_DOCS_BLANC_FILE',
         'AA_CONTACT_CAPTION', 'AA_CONTACT_TEXT',
         'AA_CONTACT_PHONE', 'AA_CONTACT_WHATSAPP_1', 'AA_CONTACT_WHATSAPP_2',
-        'AA_CONTACT_EMAIL',
+        'AA_CONTACT_EMAIL', 'AA_ABOUT_CODE',
     ),
 )
