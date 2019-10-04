@@ -10,7 +10,7 @@ from mezzanine.conf.models import Setting
 from mezzanine.utils.static import static_lazy as static
 
 from common.forms import SettingsForm
-from common.models import IndexPagePicture
+from common.models import IndexPagePicture, IndexPageText
 
 
 class TranslatableSettingsAdmin(SettingsAdmin):
@@ -71,6 +71,25 @@ class IndexPagePictureAdmin(ModelAdmin):
             db_field, **kwargs)
 
 
+class IndexPageTextAdmin(ModelAdmin):
+    """
+    Тексты на главной странице
+    """
+    fields = (
+        'code',
+        'title',
+        'content',
+    )
+    list_display = [
+        'code',
+        'title',
+        'content',
+    ]
+    list_display_links = ('code', 'title',)
+    list_editable = ()
+
+
 admin.site.register(IndexPagePicture, IndexPagePictureAdmin)
+admin.site.register(IndexPageText, IndexPageTextAdmin)
 admin.site.unregister(Setting)
 admin.site.register(Setting, TranslatableSettingsAdmin)

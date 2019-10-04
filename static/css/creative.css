@@ -369,6 +369,12 @@ header .header-content .header-content-inner p {
   margin-top: 20px;
 }
 
+.about{
+  margin-bottom: 40px;
+  text-indent: 50px;
+  text-align: justify;
+}
+
 .copyright{
   margin-top: 40px;
 }

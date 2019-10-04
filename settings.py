@@ -216,6 +216,7 @@ ADMIN_MENU_ORDER = (
     ('Основные данные', (
         'pages.Page',
         ('Картинки на главной', 'common.IndexPagePicture'),
+        ('Тексты', 'common.IndexPageText'),
         ('Преимущества', 'benefits.Benefit'),
         ('Услуги', 'services.Service'),
         ('Автобусы', 'bus.Bus'),
