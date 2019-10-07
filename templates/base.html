@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load i18n pages_tags staticfiles compress  %}
+{% load i18n pages_tags staticfiles compress common_tags %}
 
 {%  block header %}
 <head>
@@ -96,6 +96,11 @@
                     <li>
                         <a class="page-scroll" href="#documents">{% trans "Документы" %}</a>
                     </li>
+                    {% if settings.AA_ABOUT_CODE|text_get:"title" %}
+                    <li>
+                        <a class="page-scroll" href="#about">{{ settings.AA_ABOUT_CODE|text_get:"title" }}</a>
+                    </li>
+                    {% endif %}
                     <li>
                         <a class="page-scroll" href="#contact">{% trans "Контакты" %}</a>
                     </li>
