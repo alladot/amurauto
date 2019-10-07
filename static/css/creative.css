@@ -369,8 +369,12 @@ header .header-content .header-content-inner p {
   margin-top: 20px;
 }
 
+section#about{
+  padding-bottom: 0px; /*раздел о компании и контакты - без большого пробела*/
+}
+
 .about{
-  margin-bottom: 40px;
+  /*margin-bottom: 40px;*/
   text-indent: 50px;
   text-align: justify;
 }
