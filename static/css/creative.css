@@ -280,6 +280,9 @@ header .header-content .header-content-inner p {
     margin: 20px auto 0;
   }
 }
+.service-box h4 {
+  font-weight: 600;
+}
 .service-box p {
   margin-bottom: 0;
 }

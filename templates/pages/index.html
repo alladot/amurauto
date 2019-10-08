@@ -34,11 +34,11 @@
         <div class="container">
             <div class="row">
                 {% for service in services %}
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 text-center">
                         <div class="service-box">
                             <i class="fa fa-4x {{ service.icon_name }} text-primary sr-icons"></i>
                             <h4>{{ service.title }}</h4>
-                            {#<p class="text-muted">{{ service.content }}</p>#}
+                            <p class="text-muted">{{ service.content }}</p>
                         </div>
                     </div>
                     {# Чтобы верстка не "плыла" при разной высоте элементов, #}
